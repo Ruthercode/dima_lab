@@ -1,7 +1,6 @@
 #pragma once
 #include "Fruit.h"
 #include "PurchaseOrder.h"
-#include "pch.h"
 
 namespace Mikhalskiy17
 {

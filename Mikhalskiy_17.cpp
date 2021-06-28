@@ -1,6 +1,5 @@
 #include "MyForm.h"
 #include <Windows.h>
-#include "pch.h"
 using namespace Mikhalskiy17;
 
 

@@ -1,6 +1,5 @@
 #include "MyForm.h"
 #include <iostream>
-#include "pch.h"
 
 using namespace Mikhalskiy17;
 using namespace System;
@@ -21,7 +20,7 @@ System::Void MyForm::WirehouseUploadButton_Click(System::Object^ sender, System:
 	{ //заполним данные в табоицу формы
 		while (dbReader->Read())
 		{
-			if (!(CheckName(dbReader["Wirehouse"]->ToString()) && CheckName(dbReader["Fruit"]->ToString()) && CheckDate(dbReader["Date"]->ToString()) && CheckPounds(Convert::ToDouble(dbReader["Pounds"]))))
+			if (!(CheckName(dbReader["Wirehouse"]->ToString()) && CheckName(dbReader["Fruit"]->ToString())&& CheckDate(dbReader["Date"]->ToString()) && CheckPounds(Convert::ToDouble(dbReader["Pounds"]))))
 			{
 				MessageBox::Show("Incorrect data!", "Attention!");
 				return System::Void();
@@ -133,7 +132,7 @@ System::Void MyForm::WirehouseUpdateButton_Click(System::Object^ sender, System:
 	String^ query = "DELETE FROM [Wirehouses] WHERE ID = " + id;
 	_DBRequest(query);
 
-	query = "INSERT INTO [Wirehouses] VALUES (" + id + ", '" + wirehouse + "', '" + fruit + "', '" + date + "', '" + pounds + "')";
+	query = "INSERT INTO [Wirehouses] VALUES (" + id + ", '" + wirehouse + "', '" + fruit + "', '" + pounds + "', '" + date + "')";
 	_DBRequest(query);
 
 	return System::Void();
@@ -433,7 +432,7 @@ System::Void MyForm::Search_Click(System::Object^ sender, System::EventArgs^ e) 
 			{
 				for each (Fruit ^ ff in order->GetFruits())
 				{
-					if (f->GetName() == ff->GetName())
+					if (Wirehouses->FindStringExact(var->GetName()) != ListBox::NoMatches && Orders->FindStringExact(order->GetName()) != ListBox::NoMatches && f->GetName() == ff->GetName())
 					{
 						Output->Items->Add(f->GetName());
 					}
@@ -451,9 +450,15 @@ bool MyForm::CheckName(String^ name)
 
 bool MyForm::CheckDate(String^ date)
 {
-	return Regex::IsMatch(date,
-		"^\d{4}-((0\d)|(1[012]))-(([012]\d)|3[01])$",
-		RegexOptions::IgnoreCase, TimeSpan::FromMilliseconds(250));
+	try
+	{
+		DateTime dt = DateTime::ParseExact(date, (String^)"dd/MM/yyyy", System::Globalization::CultureInfo::InvariantCulture);
+		return true;
+	}
+	catch (System::Exception^ e)
+	{
+		return false;
+	}
 }
 
 bool MyForm::CheckPounds(double^ pounds)

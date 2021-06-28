@@ -2,7 +2,6 @@
 
 #include "Wirehouse.h"
 #include "PurchaseOrder.h"
-#include "pch.h"
 
 namespace Mikhalskiy17 {
 

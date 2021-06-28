@@ -1,5 +1,4 @@
 #pragma once
-#include "pch.h"
 namespace Mikhalskiy17 
 {
 	using namespace System;

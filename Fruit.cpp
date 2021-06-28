@@ -1,5 +1,4 @@
 #include "Fruit.h"
-#include "pch.h"
 
 using namespace Mikhalskiy17;
 

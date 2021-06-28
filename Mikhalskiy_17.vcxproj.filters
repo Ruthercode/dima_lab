@@ -47,9 +47,6 @@
     <ClInclude Include="Wirehouse.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="pch.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Debug\Database.mdb">

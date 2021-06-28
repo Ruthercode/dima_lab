@@ -1,6 +1,5 @@
 #pragma once
 #include "Fruit.h"
-#include "pch.h"
 namespace Mikhalskiy17
 {
 	using namespace System;

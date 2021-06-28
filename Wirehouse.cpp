@@ -1,5 +1,4 @@
 #include "Wirehouse.h"
-#include "pch.h"
 
 using namespace Mikhalskiy17;
 
